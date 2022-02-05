@@ -37,6 +37,7 @@ public class ex3 {
                         int temp = matrix[i][j-1];
                         matrix[i][j-1] = matrix[i][j];
                         matrix[i][j] = temp;
+                        j-= 2;
                     }
                 }
             }
