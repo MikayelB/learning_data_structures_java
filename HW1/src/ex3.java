@@ -12,15 +12,13 @@ public class ex3 {
 
         int[][] matrix = new int[matrixLength][matrixLength];
         fillMatrixData(input, matrix, matrixLength);
-        printMatrix(matrix, matrixLength);
+//        printMatrix(matrix, matrixLength);             // to print the inputted matrix
 
         int middle = (int) Math.ceil((matrixLength / 2));
-//        System.out.println(middle);
         int matrixMid = matrix[middle][middle];
-//        System.out.println(matrixMid);
 
-        movingToCenter(matrix, matrixLength, middle);
-        printMatrix(matrix, matrixLength);
+        System.out.println(movingToCenter(matrix, matrixLength, middle));
+//        printMatrix(matrix, matrixLength);             // to print the finished matrix
 
 
     }
@@ -70,7 +68,7 @@ public class ex3 {
     }
 
     public static void fillMatrixData(Scanner input, int[][] matrix, int size) {
-        System.out.println("Enter the matrix's data: ");
+        System.out.println("Enter the matrix's data (must have only one 0): ");
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
