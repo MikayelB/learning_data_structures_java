@@ -23,7 +23,7 @@ public static void main(String[] args) {
             System.out.println("You didn't follow the instructions");
             return;
         } else{
-            y = y + 1 - (asciiNum - 43);
+            y += 1 - (asciiNum - 43);
         }
 
     }

@@ -2,6 +2,10 @@ import java.nio.file.LinkPermission;
 import java.util.Scanner;
 
 public class ex3 {
+
+    ///-----------Below is my non-efficient way (which took way too much time), the correct way to solve this is lower
+
+    /*
     public static void main(String[] args) {
 
 
@@ -86,5 +90,56 @@ public class ex3 {
         }
     }
 
+*/
 
+
+    ///-----------Below is the correct way, I assume, which I realized after solving the problem with the first way
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of the matrix's side (must be odd): ");
+        int matrixLength = input.nextInt();
+
+        int[][] matrix = new int[matrixLength][matrixLength];
+        fillMatrixData(input, matrix, matrixLength);
+
+        System.out.println(stepCoutner(matrix, matrixLength));
+
+    }
+
+    public static void fillMatrixData(Scanner input, int[][] matrix, int size) {
+
+        System.out.println("Enter the matrix's data (must have only one 0): ");
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                matrix[i][j] = input.nextInt();
+            }
+        }
+    }
+
+    public static int stepCoutner(int[][] matrix, int matrixLength){
+
+        int middle = (int) Math.ceil((matrixLength / 2));
+        int stepCount = 0;
+
+
+        for(int i = 0; i < matrixLength; i++){
+            for(int j = 0; j < matrixLength; j++){
+                if(matrix[i][j] == 0){
+                    if(i != middle){
+                        stepCount += Math.abs(middle - i);
+                    }
+                    if(j != middle){
+                        stepCount += Math.abs(middle - j);
+                    }
+                }
+            }
+        }
+        return stepCount;
+    }
+
+// tight-bound = O(n^2)
+// worst case complexity = O(n^2)
+// when the 0 is in the end of the matrix (bottom right) and there have been many iterations done just to reach that point
 }
