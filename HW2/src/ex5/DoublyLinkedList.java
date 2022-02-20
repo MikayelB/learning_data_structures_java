@@ -13,10 +13,14 @@ public class DoublyLinkedList<E> {
         // a)
         list.printDLL(list.header);
 
-        // b)
+        // b)  uncomment below to make it work (commented to make c work since it would have been sorted)
+//        list.selectionSort(list.header);
+//        System.out.println("Selection sorted result");
+//        list.printDLL(list.header);
 
-        list.selectionSort(list.header);
-        System.out.println("Selection sorted result");
+        // c)
+        list.insertionSort(list.header);
+        System.out.println("Insertion sorted result");
         list.printDLL(list.header);
 
     }
@@ -195,6 +199,35 @@ public class DoublyLinkedList<E> {
             outerCurrent.setPrev(min);
             innerCurrent = outerCurrent;
             min = innerCurrent;
+        }
+    }
+
+    // c)
+    public void insertionSort(Node<Integer> header){
+        if(isEmpty()){
+            System.out.println("The list is empty");
+            return;
+        }
+        Node<Integer> current = header.next;
+
+        // make a innerCurrent in order to not edit our header
+        while(current != trailer){
+            if(current.next.getElement() < current.getElement()){
+                Node<Integer> tempCur = current;
+                Node<Integer> temp = current.next;
+                while(temp.getElement() < tempCur.getElement()){
+                    tempCur = tempCur.prev;
+                }
+
+                tempCur = tempCur.next;
+                temp.prev.setNext(temp.next);
+                temp.next.setPrev(temp.prev);
+                temp.setPrev(tempCur.prev);
+                tempCur.prev.setNext(temp);
+                temp.setNext(tempCur);
+                tempCur.setPrev(temp);
+            }
+            current = current.next;
         }
     }
 }
