@@ -13,6 +13,12 @@ public class DoublyLinkedList<E> {
         // a)
         list.printDLL(list.header);
 
+        // b)
+
+        list.selectionSort(list.header);
+        System.out.println("Selection sorted result");
+        list.printDLL(list.header);
+
     }
 
 
@@ -138,6 +144,12 @@ public class DoublyLinkedList<E> {
     // exercise methods
     // a)
     public void printDLL(Node<E> header){
+
+        if(isEmpty()){
+            System.out.println("The list is empty");
+            return;
+        }
+
         Node<E> temp = header;      // make a temp in order to not edit our header
 
         while(temp.getNext() != trailer){
@@ -146,8 +158,45 @@ public class DoublyLinkedList<E> {
         }
     }
 
+    // b)
+    public void selectionSort(Node<Integer> header) {
+        if (isEmpty()) {
+            System.out.println("The list is empty");
+            return;
+        }
 
+        Node<Integer> outerCurrent = header.next;
+        Node<Integer> innerCurrent = header;      // make a innerCurrent in order to not edit our header
+        Node<Integer> min = header.next;
 
+        while (outerCurrent != trailer) {
+//            System.out.println("start iteration with min " + min.getElement());
+            while (innerCurrent.next != trailer) {
+                innerCurrent = innerCurrent.next;
+
+                if (min.getElement() > innerCurrent.getElement()) {
+                    min = innerCurrent;
+//                    System.out.println("change min " + min.getElement());
+                }
+            }
+
+            if (min == outerCurrent) {
+                outerCurrent = outerCurrent.next;
+                innerCurrent = outerCurrent;
+                min = innerCurrent;
+                continue;
+            }
+
+            min.prev.setNext(min.next);
+            min.next.setPrev(min.prev);
+            min.setPrev(outerCurrent.prev);
+            outerCurrent.prev.setNext(min);
+            min.setNext(outerCurrent);
+            outerCurrent.setPrev(min);
+            innerCurrent = outerCurrent;
+            min = innerCurrent;
+        }
+    }
 }
 
 
