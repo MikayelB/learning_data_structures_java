@@ -1,6 +1,21 @@
 package ex5;
 
 public class DoublyLinkedList<E> {
+
+    public static void main(String[] args) {
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
+
+        list.addLast(4);
+        list.addLast(5);
+        list.addLast(123);
+        list.addLast(52);
+
+        // a)
+        list.printDLL(list.header);
+
+    }
+
+
     // Node class----------------------------------------
     private static class Node<E> {
         private E el;
@@ -121,6 +136,17 @@ public class DoublyLinkedList<E> {
     }
 
     // exercise methods
+    // a)
+    public void printDLL(Node<E> header){
+        Node<E> temp = header;      // make a temp in order to not edit our header
+
+        while(temp.getNext() != trailer){
+            System.out.println(temp.next.getElement());
+            temp = temp.next;
+        }
+    }
+
+
 
 }
 
