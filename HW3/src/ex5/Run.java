@@ -16,5 +16,23 @@ public class Run {
         stack.addFirst(2);
         stack.addFirst(9);
         stack.printStackDeque();
+
+        System.out.println("-------------Here was the full stack-------------");
+
+        stack.removeFirst();
+        System.out.println("-------removed first once-------");
+        stack.printStackDeque();
+
+        stack.removeFirst();
+        System.out.println("-------removed first twice-------");
+
+        stack.printStackDeque();
+        stack.removeFirst();
+        System.out.println("-------removed first three times-------");
+        stack.printStackDeque();
+        System.out.println("-------removed first 4 times (our stack had only 3 elements)-------");
+        stack.removeFirst();
+        stack.printStackDeque();
+
     }
 }

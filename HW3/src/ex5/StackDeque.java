@@ -52,9 +52,11 @@ public class StackDeque<E> implements  Deque<E> {
             for(int i = 1; i <= capacity; i++){
                 S.push(T.pop());
             }
+            topS++;
             capacity++;
         } else {
             S.push(e);
+            topS++;
             capacity++;
         }
     }
@@ -66,7 +68,26 @@ public class StackDeque<E> implements  Deque<E> {
 
     @Override
     public E removeFirst() {
-        return null;
+        if(isEmpty()){
+            System.out.println("The stack is empty");
+            return null;
+        }
+
+        if(topS == 0){
+            capacity--;
+            return S.pop();
+
+        } else{
+            for(int i = 1; i < capacity; i++){
+                T.push(S.pop());
+            }
+            E temp = S.pop();
+            for(int i = 1; i < capacity; i++){
+                S.push(T.pop());
+            }
+            capacity--;
+            return temp;
+        }
     }
 
     @Override
