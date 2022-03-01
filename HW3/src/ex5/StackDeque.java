@@ -1,21 +1,26 @@
 package ex5;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.Stack;
 
 public class StackDeque<E> implements  Deque<E> {
 
     int capacity = 0;
+    int topS = -1;
+    int topT = -1;
+
+    Stack<E> S;
+    Stack<E> T;
 
     public StackDeque() {
-        Stack<E> S = new Stack<E>();
-        Stack<E> T = new Stack<E>();
-
+        S = new Stack<>();
+        T = new Stack<>();
     }
 
 
     @Override
     public int size() {
-        return capacity;
+        return S.size();
     }
 
     @Override
@@ -39,7 +44,19 @@ public class StackDeque<E> implements  Deque<E> {
 
     @Override
     public void addFirst(E e) {
-
+        if(topS != -1){
+            for(int i = 1; i <= capacity; i++){
+                T.push(S.pop());
+            }
+            S.push(e);
+            for(int i = 1; i <= capacity; i++){
+                S.push(T.pop());
+            }
+            capacity++;
+        } else {
+            S.push(e);
+            capacity++;
+        }
     }
 
     @Override
@@ -54,6 +71,18 @@ public class StackDeque<E> implements  Deque<E> {
 
     @Override
     public E removeLast() {
-        return null;
+        return S.pop();
+    }
+
+    //---Helper functions
+    public void printStackDeque(){
+        Stack<E>temp = new Stack<>();
+        for(int i = 1; i <= capacity; i++){
+            System.out.println(temp.push((E) S.pop()));
+        }
+        for(int i = 1; i <= capacity; i++){
+            S.push(temp.pop());
+        }
+
     }
 }
