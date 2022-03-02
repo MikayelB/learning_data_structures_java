@@ -1,9 +1,10 @@
-package ex5;
+package ex4;
 
-import javax.swing.plaf.IconUIResource;
+import sources.Deque;
+
 import java.util.Stack;
 
-public class StackDeque<E> implements  Deque<E> {
+public class StackDeque<E> implements Deque<E> {
 
     int capacity = 0;
     int topS = -1;

@@ -1,7 +1,3 @@
-package ex5;
-
-import java.util.Stack;
-
 public class Run {
     public static void main(String[] args) {
 
