@@ -33,13 +33,24 @@ public class StackDeque<E> implements  Deque<E> {
     }
 
     @Override
-    public E first() {
-        return null;
+    public E last() {
+        return S.peek();
     }
 
     @Override
-    public E last() {
-        return null;
+    public E first() {
+        if(isEmpty()){
+            System.out.println("The stack is empty");
+            return null;
+        }
+        for(int i = 1; i < capacity; i++){
+            T.push(S.pop());
+        }
+        E first  = S.peek();
+        for(int i = 1; i < capacity; i++){
+            S.push(T.pop());
+        }
+        return first;
     }
 
     @Override
@@ -63,7 +74,8 @@ public class StackDeque<E> implements  Deque<E> {
 
     @Override
     public void addLast(E e) {
-
+        S.push(e);
+        capacity++;
     }
 
     @Override
@@ -92,7 +104,9 @@ public class StackDeque<E> implements  Deque<E> {
 
     @Override
     public E removeLast() {
+        capacity--;
         return S.pop();
+
     }
 
     //---Helper functions
@@ -104,6 +118,5 @@ public class StackDeque<E> implements  Deque<E> {
         for(int i = 1; i <= capacity; i++){
             S.push(temp.pop());
         }
-
     }
 }
