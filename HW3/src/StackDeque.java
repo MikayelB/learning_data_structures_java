@@ -1,5 +1,3 @@
-package ex4;
-
 import sources.Deque;
 
 import java.util.Stack;

@@ -1,4 +1,4 @@
-package ex4;
+package sources;
 
 public interface Deque<E> {
     int size(); // returns the # of elements in the deque

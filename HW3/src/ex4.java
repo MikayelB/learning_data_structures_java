@@ -1,4 +1,4 @@
-public class Run {
+public class ex4 {
     public static void main(String[] args) {
 
         StackDeque<Integer> stack = new StackDeque<Integer>();
