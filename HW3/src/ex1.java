@@ -1,5 +1,6 @@
 public class ex1 {
 
+    // complexity O(n)
     public static <E> void recReverseQueue(ArrayQueue<E> queue){
 
         // checking if the queue is empty
@@ -33,7 +34,7 @@ public class ex1 {
 
         // printing the queue
         System.out.println(queue.toString());
-        // reversing the queue
+        // reversing the queue, complexity: O(N)
         recReverseQueue(queue);
         // printing the new, reversed queue
         System.out.println(queue.toString());
