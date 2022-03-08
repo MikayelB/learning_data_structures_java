@@ -25,7 +25,7 @@ public class ex6 {
             }
         }
         temp = S.get(left);
-        S.set(right, S.get(left);
+        S.set(right, S.get(left));
         S.set(b, temp);
 
         quickSortInPlace(S, a, right - 1);
