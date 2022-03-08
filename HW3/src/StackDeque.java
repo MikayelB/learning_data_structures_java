@@ -18,11 +18,13 @@ public class StackDeque<E> implements Deque<E> {
 
 
     @Override
+    // O(1)
     public int size() {
         return S.size();
     }
 
     @Override
+    // O(1)
     public boolean isEmpty() {
         if (capacity == 0) {
             return true;
@@ -32,11 +34,13 @@ public class StackDeque<E> implements Deque<E> {
     }
 
     @Override
+    // O(1)
     public E last() {
         return S.peek();
     }
 
     @Override
+    // O(n) since we loop through the stack
     public E first() {
         if(isEmpty()){
             System.out.println("The stack is empty");
@@ -53,6 +57,7 @@ public class StackDeque<E> implements Deque<E> {
     }
 
     @Override
+    // O(n) since we loop through the stack
     public void addFirst(E e) {
         if(topS != -1){
             for(int i = 1; i <= capacity; i++){
@@ -72,12 +77,14 @@ public class StackDeque<E> implements Deque<E> {
     }
 
     @Override
+    // O(1)
     public void addLast(E e) {
         S.push(e);
         capacity++;
     }
 
     @Override
+    // O(n) since we loop through the stack
     public E removeFirst() {
         if(isEmpty()){
             System.out.println("The stack is empty");
@@ -102,6 +109,7 @@ public class StackDeque<E> implements Deque<E> {
     }
 
     @Override
+    // O(1)
     public E removeLast() {
         capacity--;
         return S.pop();
