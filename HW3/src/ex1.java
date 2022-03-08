@@ -1,3 +1,10 @@
+import sources.ArrayQueue;
+/*
+----------------------------------------------------------------------
+Used ArrayQueue in sources package, for exercise 3 check QueueArray class in src
+----------------------------------------------------------------------
+
+ */
 public class ex1 {
 
     // complexity O(n)

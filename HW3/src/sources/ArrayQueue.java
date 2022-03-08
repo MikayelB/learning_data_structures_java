@@ -1,4 +1,10 @@
+package sources;
+
 import sources.Queue;
+/*----------------------------------------------------------------------
+    This is the tradition ArrayQueue implementation  used in ex1, for ex3 check QueueArray class in src
+---------------------------------------------------------------------
+*/
 
 public class ArrayQueue<E> implements Queue<E> {
 
