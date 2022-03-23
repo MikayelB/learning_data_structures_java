@@ -62,6 +62,33 @@ public class ArrayList<E> implements List<E> {
         return temp;
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayIterator();
+    }
+
+    //---------------- nested ArrayIterator class ----------------
+
+    private class ArrayIterator implements Iterator<E> {
+        private int j = 0;
+        private boolean removable = false;
+
+        public boolean hasNext() { return j < size; }
+
+        public E next() throws NoSuchElementException {
+            if (j == size) throw new NoSuchElementException("No next element");
+            removable = true;   // this element can subsequently be removed
+            return data[j++];   // post-increment j, so it is ready for future call to next
+        }
+
+        public void remove() throws IllegalStateException {
+            if (!removable) throw new IllegalStateException("nothing to remove");
+            ArrayList.this.remove(j-1);
+            j--;
+            removable = false;
+        }
+    } //------------ end of nested ArrayIterator class ------------
+
 
     protected void checkIndex(int i, int n) throws IndexOutOfBoundsException {
         if (i < 0 || i >= n)
@@ -89,4 +116,3 @@ public class ArrayList<E> implements List<E> {
         return sb.toString();
     }
 }
-
