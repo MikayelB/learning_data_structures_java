@@ -31,35 +31,31 @@ public class ex1 {
         int ascii = 122; // z
         Position<Character> curr = posList.first();
         Position<Character> temp  = null;
-//        System.out.println(curr.getElement());
+
         for(int i = 0; i < 25; i++) {
+
             if(curr == posList.first()){
                 posList.addBefore(curr, (char)ascii);
-//                curr = posList.after(curr);
                 ascii--;
-
             }
+
             if ((int) curr.getElement() < ascii) {
                 posList.addBefore(curr, (char)ascii);
-//                curr = posList.after(curr);
             } else if((int) curr.getElement() > ascii){
                 posList.addAfter(curr, (char) ascii);
                 curr = posList.after(curr);
             } else{
                 if(curr == posList.last()){
                     posList.addAfter(curr, ' ');
-
                 }
                 curr = posList.after(curr);
             }
             ascii--;
-
         }
         posList.remove(curr);
-
     }
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
 
         //---------------ArrayList way------------------
         ArrayList<Character> aList = new ArrayList<>();
