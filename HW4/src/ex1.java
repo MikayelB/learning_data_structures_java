@@ -8,6 +8,11 @@ public class ex1 {
 
     // ArrayList way
     public static void addMissingLettersArrayList(ArrayList<Character> arrList){  // O(n) more details in main
+        if(arrList.size() == 0){
+            System.out.println("Your Array List is empty");
+            return;
+        }
+
         int ascii = 122; // z
 
         for(int i = 0; i <= 25; i++){//z x
@@ -27,7 +32,13 @@ public class ex1 {
 
 
     // LinkedPositionalList way
-    public static void addMissingLettersLinkedPositionalList(LinkedPositionalList<Character> posList){
+    public static void addMissingLettersLinkedPositionalList(LinkedPositionalList<Character> posList){  // O(n) more details in main
+
+        if(posList.size() == 0){
+            System.out.println("Your Positional Linked List is empty");
+            return;
+        }
+
         int ascii = 122; // z
         Position<Character> curr = posList.first();
         Position<Character> temp  = null;
@@ -79,6 +90,7 @@ public class ex1 {
         pList.addLast('a');
 
         System.out.println("LinkedPositionalList start: " + pList);
+        // O(n), more specifically O(26) since it has to loop through the list and add the missing letters which are up to 26 letters
         addMissingLettersLinkedPositionalList(pList);
         System.out.println("LinkedPositionalList end: " + pList);
     }
