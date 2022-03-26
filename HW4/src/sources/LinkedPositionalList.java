@@ -127,7 +127,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
   }
 
   @Override
-  public Position<E> addAfter(Position<E> p, E e)
+  public Position<E>  addAfter(Position<E> p, E e)
                                 throws IllegalArgumentException {
     Node<E> node = validate(p);
     return addBetween(e, node, node.getNext());
@@ -206,7 +206,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
    * This exists for debugging purposes only.
    */
   public String toString() {
-    StringBuilder sb = new StringBuilder("(");
+    StringBuilder sb = new StringBuilder("");
     Node<E> walk = header.getNext();
     while (walk != trailer) {
       sb.append(walk.getElement());
@@ -214,7 +214,6 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
       if (walk != trailer)
         sb.append(", ");
     }
-    sb.append(")");
     return sb.toString();
   }
 }

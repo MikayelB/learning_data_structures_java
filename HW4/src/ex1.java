@@ -1,7 +1,8 @@
 import sources.ArrayList;
 import sources.LinkedPositionalList;
+import sources.Position;
 
-import java.lang.reflect.Array;
+import javax.swing.*;
 
 public class ex1 {
 
@@ -27,6 +28,34 @@ public class ex1 {
 
     // LinkedPositionalList way
     public static void addMissingLettersLinkedPositionalList(LinkedPositionalList<Character> posList){
+        int ascii = 122; // z
+        Position<Character> curr = posList.first();
+        Position<Character> temp  = null;
+//        System.out.println(curr.getElement());
+        for(int i = 0; i < 25; i++) {
+            if(curr == posList.first()){
+                posList.addBefore(curr, (char)ascii);
+//                curr = posList.after(curr);
+                ascii--;
+
+            }
+            if ((int) curr.getElement() < ascii) {
+                posList.addBefore(curr, (char)ascii);
+//                curr = posList.after(curr);
+            } else if((int) curr.getElement() > ascii){
+                posList.addAfter(curr, (char) ascii);
+                curr = posList.after(curr);
+            } else{
+                if(curr == posList.last()){
+                    posList.addAfter(curr, ' ');
+
+                }
+                curr = posList.after(curr);
+            }
+            ascii--;
+
+        }
+        posList.remove(curr);
 
     }
     public static void main(String[] args) {
@@ -47,9 +76,14 @@ public class ex1 {
 
         //---------------LinkedPositionalList way------------------
         LinkedPositionalList<Character> pList = new LinkedPositionalList<>();
+        pList.addLast('m');
+        pList.addLast('j');
+        pList.addLast('d');
+        pList.addLast('b');
+        pList.addLast('a');
 
-
-
+        System.out.println("LinkedPositionalList start: " + pList);
+        addMissingLettersLinkedPositionalList(pList);
+        System.out.println("LinkedPositionalList end: " + pList);
     }
-
 }
