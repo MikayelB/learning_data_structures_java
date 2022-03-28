@@ -34,7 +34,28 @@ public class SLLList<E> implements List<E> {
 
     @Override
     public E set(int i, E e) throws IndexOutOfBoundsException {
-        return null;
+        if(sll.isEmpty()) {
+            if(i == 0){
+                sll.addLast(e);
+            }else{
+                throw new IndexOutOfBoundsException();
+            }
+        };
+        if(i < 0 || i > size()){
+            throw new IndexOutOfBoundsException();
+        }
+
+        SinglyLinkedList.Node<E> curr = sll.head;
+        SinglyLinkedList.Node<E> afterCurr = curr.getNext();
+
+        for(int index = 1; index < i; index++){
+            curr = curr.getNext();
+            afterCurr = curr.getNext();
+        }
+        SinglyLinkedList.Node<E> element = new SinglyLinkedList.Node<>(e, afterCurr.getNext());
+
+        curr.setNext(element);
+        return afterCurr.getElement();
     }
 
     @Override
