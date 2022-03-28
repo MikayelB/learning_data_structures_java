@@ -1,10 +1,8 @@
-import org.w3c.dom.Node;
 import sources.List;
-import sources.SinglyLinkedList;
 
 import java.util.Iterator;
 
-public class SLLList<E> implements List {
+public class SLLList<E> implements List<E> {
 
     public SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -19,10 +17,15 @@ public class SLLList<E> implements List {
     }
 
     @Override
-    public Object get(int i) throws IndexOutOfBoundsException {
+    public E get(int i) throws IndexOutOfBoundsException {   // O(n) based on the index needed to reach
+        if(sll.isEmpty()) return null;
+        if(i < 0 || i > size()){
+            throw new IndexOutOfBoundsException();
+        }
+
         SinglyLinkedList.Node<E> curr = sll.head;
 
-        for(int index = 0; index < i; index++){
+        for(int index = 1; index <= i; index++){
             curr = curr.getNext();
         }
         return curr.getElement();
@@ -30,17 +33,40 @@ public class SLLList<E> implements List {
     }
 
     @Override
-    public Object set(int i, Object o) throws IndexOutOfBoundsException {
+    public E set(int i, E e) throws IndexOutOfBoundsException {
         return null;
     }
 
     @Override
-    public void add(int i, Object o) throws IndexOutOfBoundsException {
+    public void add(int i, E e) throws IndexOutOfBoundsException {
+        if (sll.isEmpty()) {
+            if(i == 0){
+                sll.addFirst(e);
+            } else {
+                throw new IndexOutOfBoundsException();
+            }
+        }
 
+        if(i < 0 || i > size()){
+            throw new IndexOutOfBoundsException();
+        }
+
+        SinglyLinkedList.Node<E> curr = sll.head;
+        SinglyLinkedList.Node<E> afterCurr = curr.getNext();
+
+
+        for(int index = 1; index < i; index++){
+            curr = curr.getNext();
+            afterCurr = curr.getNext();
+        }
+        SinglyLinkedList.Node<E> element = new SinglyLinkedList.Node<>(e, afterCurr);
+
+        curr.setNext(element);
+        sll.size++;
     }
 
     @Override
-    public Object remove(int i) throws IndexOutOfBoundsException {
+    public E remove(int i) throws IndexOutOfBoundsException {
         return null;
     }
 

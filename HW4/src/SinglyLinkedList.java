@@ -1,12 +1,10 @@
-package sources;
-
 public class SinglyLinkedList<E> implements Cloneable {
   //---------------- nested Node class ----------------
   public static class Node<E> {
 
     private E element;
     private Node<E> next;
-    public Node(E e, Node<E> n) {
+    protected Node(E e, Node<E> n) {
       element = e;
       next = n;
     }
@@ -20,9 +18,9 @@ public class SinglyLinkedList<E> implements Cloneable {
   //----------- end of nested Node class -----------
 
 
-  public Node<E> head = null;
+  protected Node<E> head = null;
   private Node<E> tail = null;
-  public int size = 0;
+  protected int size = 0;
 
   public SinglyLinkedList() { }
 
