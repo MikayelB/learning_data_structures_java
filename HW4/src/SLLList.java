@@ -25,7 +25,7 @@ public class SLLList<E> implements List<E> {
 
         SinglyLinkedList.Node<E> curr = sll.head;
 
-        for(int index = 1; index <= i; index++){
+        for(int index = 0; index < i; index++){
             curr = curr.getNext();
         }
         return curr.getElement();
@@ -33,7 +33,7 @@ public class SLLList<E> implements List<E> {
     }
 
     @Override
-    public E set(int i, E e) throws IndexOutOfBoundsException {
+    public E set(int i, E e) throws IndexOutOfBoundsException {  // O(n) based on the index needed to reach
         if(sll.isEmpty()) {
             if(i == 0){
                 sll.addLast(e);
@@ -59,10 +59,11 @@ public class SLLList<E> implements List<E> {
     }
 
     @Override
-    public void add(int i, E e) throws IndexOutOfBoundsException {
+    public void add(int i, E e) throws IndexOutOfBoundsException {  // O(n) based on the index needed to reach
         if (sll.isEmpty()) {
             if(i == 0){
                 sll.addFirst(e);
+                return;
             } else {
                 throw new IndexOutOfBoundsException();
             }
@@ -87,12 +88,28 @@ public class SLLList<E> implements List<E> {
     }
 
     @Override
-    public E remove(int i) throws IndexOutOfBoundsException {
-        return null;
+    public E remove(int i) throws IndexOutOfBoundsException {  // O(n) based on the index needed to reach
+        if(sll.isEmpty()) return null;
+        if(i < 0 || i > size()){
+            throw new IndexOutOfBoundsException();
+        }
+
+
+        SinglyLinkedList.Node<E> curr = sll.head;
+        SinglyLinkedList.Node<E> afterCurr = curr.getNext();
+
+        for(int index = 0; index < i - 1; index++){
+            curr = curr.getNext();
+            afterCurr = curr.getNext();
+        }
+        curr.setNext(afterCurr.getNext());
+        sll.size--;
+        return afterCurr.getElement();
     }
 
     @Override
     public Iterator iterator() {
         return null;
     }
+
 }
