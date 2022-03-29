@@ -122,6 +122,7 @@ public class SLLList<E> implements List<E> {
         SLLListIterator(){
             currNode = sll.head;
         }
+
         @Override
         public boolean hasNext() {
             if(index < sll.size){
@@ -132,26 +133,40 @@ public class SLLList<E> implements List<E> {
 
         @Override
         public E next() {
-
-            E tmp = currNode.getElement();
-            while(index <= sll.size){
-
-                currEl = get(index);
-//                System.out.println(currEl);
-                index+=3;
-            }
-
-            return tmp;
-//            E tmp = curr.getElement();
+            /* Other Attempts
+//            index = 0;
+//            E tmp = currNode.getElement();
+//            while(index <= 3){
+//
+//                currEl = get(index);
+////                System.out.println(currEl);
+//                index+=3;
+//            }
+//            for()
+//
+//            return tmp;
 //            for (int i = 1; i <= 3; i++) {
-//                if (curr.getNext() != null) {
-//                    curr = curr.getNext();
+//                if (currNode.getNext() != null) {
+//                    currNode = currNode.getNext();
 //                }else{
 //                    throw new NoSuchElementException();
 //                }
 //            }
-//            itr++;
-//            return tmp;
+*/
+            if(currNode == null){
+                throw new NoSuchElementException();
+            }
+
+            E tmp = currNode.getElement();
+            for (int i = 1; i <= 3; i++) {
+                currNode = currNode.getNext();
+                if(currNode == null){
+//                    throw new NoSuchElementException("Fuck");
+                    break;
+                }
+            }
+            index+=3;
+            return tmp;
         }
     }
 }

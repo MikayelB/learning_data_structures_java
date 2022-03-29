@@ -1,8 +1,5 @@
 package sources;
 
-import sources.Position;
-import sources.PositionalList;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

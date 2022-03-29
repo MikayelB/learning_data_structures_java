@@ -11,11 +11,15 @@ public class ex3 {
         list.add(4, 4);
         list.add(5, 5);
         list.add(6, 6);
+        list.add(7, 7);
+        list.add(8, 8);
+
 
         Iterator<Integer> listIter = list.iterator();
 
         for(int i : list){
             System.out.println(i);
         }
+
     }
 }

@@ -2,8 +2,6 @@ import sources.ArrayList;
 import sources.LinkedPositionalList;
 import sources.Position;
 
-import javax.swing.*;
-
 public class ex1 {
 
     // ArrayList way
@@ -31,7 +29,7 @@ public class ex1 {
     }
 
 
-    // LinkedPositionalList way
+    // sources.LinkedPositionalList way
     public static void addMissingLettersLinkedPositionalList(LinkedPositionalList<Character> posList){  // O(n) more details in main
 
         if(posList.size() == 0){
@@ -81,7 +79,7 @@ public class ex1 {
         addMissingLettersArrayList(aList);
         System.out.println("ArrayList end: " + aList);
 
-        //---------------LinkedPositionalList way------------------
+        //---------------sources.LinkedPositionalList way------------------
         LinkedPositionalList<Character> pList = new LinkedPositionalList<>();
         pList.addLast('m');
         pList.addLast('j');
@@ -89,9 +87,9 @@ public class ex1 {
         pList.addLast('b');
         pList.addLast('a');
 
-        System.out.println("LinkedPositionalList start: " + pList);
+        System.out.println("sources.LinkedPositionalList start: " + pList);
         // O(n), more specifically O(26) since it has to loop through the list and add the missing letters which are up to 26 letters
         addMissingLettersLinkedPositionalList(pList);
-        System.out.println("LinkedPositionalList end: " + pList);
+        System.out.println("sources.LinkedPositionalList end: " + pList);
     }
 }
