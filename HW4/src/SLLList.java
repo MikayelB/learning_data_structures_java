@@ -1,6 +1,7 @@
 import sources.List;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SLLList<E> implements List<E> {
 
@@ -108,8 +109,49 @@ public class SLLList<E> implements List<E> {
     }
 
     @Override
-    public Iterator iterator() {
-        return null;
+    public Iterator<E> iterator() {
+        return new SLLListIterator();
     }
 
+
+    public class SLLListIterator implements Iterator<E>{
+        private SinglyLinkedList.Node<E> currNode;
+        private E currEl;
+        private int index = 0;
+
+        SLLListIterator(){
+            currNode = sll.head;
+        }
+        @Override
+        public boolean hasNext() {
+            if(index < sll.size){
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public E next() {
+
+            E tmp = currNode.getElement();
+            while(index <= sll.size){
+
+                currEl = get(index);
+//                System.out.println(currEl);
+                index+=3;
+            }
+
+            return tmp;
+//            E tmp = curr.getElement();
+//            for (int i = 1; i <= 3; i++) {
+//                if (curr.getNext() != null) {
+//                    curr = curr.getNext();
+//                }else{
+//                    throw new NoSuchElementException();
+//                }
+//            }
+//            itr++;
+//            return tmp;
+        }
+    }
 }
