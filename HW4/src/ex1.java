@@ -29,7 +29,7 @@ public class ex1 {
     }
 
 
-    // sources.LinkedPositionalList way
+    // LinkedPositionalList way
     public static void addMissingLettersLinkedPositionalList(LinkedPositionalList<Character> posList){  // O(n) more details in main
 
         if(posList.size() == 0){

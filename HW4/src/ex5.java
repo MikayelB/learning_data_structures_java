@@ -15,15 +15,18 @@ public class ex5 {
         list.addLast('b');
         list.addLast('z');
         list.addLast('h');
+        list.addLast('i');
         list.addLast('e');
         list.addLast('a');
 
         System.out.println(list);
-        selectionSort(list);
+//        selectionSort(list);
+        bubbleSort(list);
         System.out.println(list);
 
     }
 
+    // a)
     public static void selectionSort(LinkedPositionalList<Character> PL){
 //  garbage
 //
@@ -66,7 +69,7 @@ public class ex5 {
             }
 
             if(min == outerCurr){
-                outerCurr = PL.after(outerCurr);
+                outerCurr = PL.before(outerCurr);
                 min = outerCurr;
                 innerCurr = outerCurr;
                 continue;
@@ -80,6 +83,39 @@ public class ex5 {
             min = outerCurr;
             innerCurr = outerCurr;
         }
+    }
+
+    public static void insertionSort(Position<Character> pos){
 
     }
+
+    // c)
+    public static void bubbleSort(LinkedPositionalList<Character> PL){
+        Position<Character> outerCurr = PL.last();
+        Position<Character> innerCurr = PL.last();
+        Position<Character> max = PL.last();
+
+        while(outerCurr != null) {
+            while (innerCurr != null) {
+                if (innerCurr.getElement() > max.getElement()) {
+                    max = innerCurr;
+                }
+                innerCurr = PL.before(innerCurr);
+            }
+
+            if(max == outerCurr){
+                outerCurr = PL.before(outerCurr);
+                max = outerCurr;
+                innerCurr = outerCurr;
+                continue;
+            }
+
+            PL.addAfter(outerCurr, max.getElement());
+            PL.remove(max);
+            innerCurr = outerCurr;
+            max = outerCurr;
+            outerCurr = PL.before(outerCurr);
+        }
+    }
+
 }
