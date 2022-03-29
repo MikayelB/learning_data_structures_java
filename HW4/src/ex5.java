@@ -15,13 +15,12 @@ public class ex5 {
         list.addLast('b');
         list.addLast('z');
         list.addLast('h');
-        list.addLast('i');
         list.addLast('e');
         list.addLast('a');
 
         System.out.println(list);
-//        selectionSort(list);
-        bubbleSort(list);
+        selectionSort(list);
+//        bubbleSort(list);
         System.out.println(list);
 
     }
