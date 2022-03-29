@@ -84,6 +84,7 @@ public class ex5 {
         }
     }
 
+    // b
     public static void insertionSort(Position<Character> pos){
 
     }
