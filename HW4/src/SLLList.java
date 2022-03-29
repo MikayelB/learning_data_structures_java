@@ -8,12 +8,12 @@ public class SLLList<E> implements List<E> {
     public SinglyLinkedList sll = new SinglyLinkedList();
 
     @Override
-    public int size() {
+    public int size() {  // O(1) returns the size() from singly linked list
         return sll.size();
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty() {  // O(1) returns the isEmpty() from singly linked list
         return sll.isEmpty();
     }
 
