@@ -1,5 +1,7 @@
 import sources.*;
 
+import javax.swing.text.ElementIterator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
@@ -234,25 +236,7 @@ public class LinkedGeneralTree<E> extends AbstractTree<E> {
 
 
     // l) O(n) since will iterate over the tree without multiple loops in each other
-
-    // the below code is not working so I commented it out
-
-//    public Iterator<E> Iterator(){
-//        return new TreeIterator();
-//    }
-//
-//    public class TreeIterator(){
-//        Stack<Node<E>> someStack = new Stack<Node<E>>();
-//
-////       private Node<E> next;
-//
-//        // constructor
-//        public TreeIterator() {
-//            someStack.push(root);
-//
-//        }
-//    }
-
+    public Iterator<E> iterator(){ return super.iterator(); }
 }
 
 
