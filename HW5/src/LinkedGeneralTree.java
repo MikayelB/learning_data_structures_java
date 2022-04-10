@@ -109,7 +109,7 @@ public class LinkedGeneralTree<E> extends AbstractTree<E> {
 
     // d)
     public Position<E> ithChild(Position<E> p, int i){
-        if (!isEmpty()) throw new IllegalStateException("Tree is not empty");
+        if (isEmpty()) throw new IllegalStateException("Tree is empty");
 
         Node<E> node = validate(p);
         return node.getChild(i);
@@ -121,6 +121,7 @@ public class LinkedGeneralTree<E> extends AbstractTree<E> {
         Node<E> child = createNode(e, node, null);
 
         node.addChild(i, child);
+        size++;
         return node.getChild(i);
     }
 
@@ -130,8 +131,50 @@ public class LinkedGeneralTree<E> extends AbstractTree<E> {
         Node<E> newFirstChild = createNode(e, node, null);
 
         node.addChild(0, newFirstChild);
+        size++;
         return node.getChild(0);
     }
 
+    // g)
+    public Position<E> addLast(Position<E> p, E e){
+        Node<E> node = validate(p);
+        Node<E> newLastChild = createNode(e, node, null);
+
+        node.addChild(size, newLastChild);
+        size++;
+        return node.getChild(size - 1);
+    }
+
+    // h)
+    public E set(Position<E> p, E e) throws IllegalArgumentException{
+        Node<E> node = validate(p);
+        E temp = node.getElement();
+        node.setElement(e);
+        return temp;
+
+    }
+
+    // i)
+    public void remove(Position<E> p){
+        Node<E> nodeToRemove = validate(p);
+
+        if(nodeToRemove.children.isEmpty()){
+            return;
+        }
+        if(nodeToRemove.children.size() > 1){
+            throw new IllegalArgumentException("The node has more than 1 child");
+        }
+
+        Node<E> parentNode = nodeToRemove.parent;
+
+        int i;
+        for(i = 0; i < parentNode.children.size(); i++){
+            if(parentNode.getChild(i).getElement() == nodeToRemove.getElement()){
+                break;
+            }
+        }
+        parentNode.setChild(i, nodeToRemove.getChild(0));
+
+    }
 
 }
