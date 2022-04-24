@@ -1,6 +1,4 @@
-import sources.Entry;
-
-public class ex3 {
+public class ex4 {
     public static void main(String[] args) {
         StackSortedPriorityQueue<Integer, Integer> queue = new StackSortedPriorityQueue<>();
 
