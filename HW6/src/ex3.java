@@ -1,3 +1,4 @@
+import sources.DefaultComparator;
 import sources.Entry;
 
 import java.sql.Array;
@@ -28,8 +29,8 @@ public class ex3 {
 
 
 
-        Entry[] arr  = new Entry[];
         MaxPriorityQueue q = new MaxPriorityQueue();
+        Entry[] arr = new Entry[q.size()];
 
         q.insert('1', 1);
         q.insert('2', 2);
@@ -38,9 +39,12 @@ public class ex3 {
         q.insert('5', 5);
         q.insert('6', 44);
 
+        int i = 0;
         while(!q.isEmpty()){
-            System.out.println(arr.push(q.removeMax().getValue()));
+            arr[i] = (q.removeMax());
         }
 
+        Comparator comp = new DefaultComparator();
+        isMaxHeap(arr, comp);
     }
 }
