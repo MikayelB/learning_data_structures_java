@@ -1,15 +1,10 @@
 import sources.DefaultComparator;
 import sources.Entry;
 
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class ex3 {
-
-    // right child 2f(q) + 2
-    // left child 2f(q) + 1
 
     public static <K,V> boolean isMaxHeap(Entry<K,V>[] arr, Comparator<K> comparator){
 
