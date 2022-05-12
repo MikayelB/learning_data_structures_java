@@ -73,7 +73,7 @@ public class BST<E extends Comparable<E>> extends AbstractBinaryTree<E> {
         };
         int comparisonResult = el.compareTo(node.getElement());
         if(comparisonResult == 0){
-            throw new IllegalArgumentException("value already exists in the BST")
+            throw new IllegalArgumentException("value already exists in the BST");
         } else if(comparisonResult > 0){
             node.setRight(insert(node.getRight(), el));
         } else {
